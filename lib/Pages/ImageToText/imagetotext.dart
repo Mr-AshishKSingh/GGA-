@@ -67,7 +67,12 @@ class _imagetotextState extends State<imagetotext> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        toolbarHeight: 80,
+        elevation: 20,
+        shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.vertical(bottom: Radius.circular(20))),
         backgroundColor: Color.fromARGB(255, 233, 191, 3),
+        shadowColor: Color.fromARGB(255, 235, 237, 231),
         centerTitle: true,
         title: const Text(
           "Image to Text",
@@ -126,12 +131,22 @@ class _imagetotextState extends State<imagetotext> {
                     //     ),
                     //   ),
                     // ),
-                    leading: textAndImageChat[index]["image"] == ""
-                        ? null
-                        : Image.file(
-                            textAndImageChat[index]["image"],
-                            width: 90,
-                          ),
+                    leading: Container(
+                      height: 60,
+                      width: 50,
+                      decoration: BoxDecoration(
+                        color: textAndImageChat[index]["role"] == "User"
+                            ? Color.fromARGB(255, 233, 191, 3)
+                            : Color.fromARGB(255, 212, 196, 48),
+                        borderRadius: BorderRadius.circular(10.0),
+                      ),
+                      child: textAndImageChat[index]["image"] == ""
+                          ? null
+                          : Image.file(
+                              textAndImageChat[index]["image"],
+                              width: 90,
+                            ),
+                    ),
                     subtitle: Text(textAndImageChat[index]["text"]),
                     // trailing: textAndImageChat[index]["image"] == ""
                     //     ? null
@@ -146,53 +161,79 @@ class _imagetotextState extends State<imagetotext> {
           ),
           Container(
             alignment: Alignment.bottomRight,
-            margin: const EdgeInsets.all(20),
-            padding: const EdgeInsets.symmetric(horizontal: 15.0),
+            margin: const EdgeInsets.all(10),
             decoration: BoxDecoration(
-              color: Color.fromARGB(133, 90, 83, 83),
+              color: Color.fromARGB(0, 90, 83, 83),
               borderRadius: BorderRadius.circular(10.0),
               border: Border.all(color: const Color.fromARGB(0, 158, 158, 158)),
             ),
             child: Row(
               children: [
+                //elevated button
+
                 Expanded(
-                  child: TextField(
-                    textAlign: TextAlign.center,
-                    controller: _textController,
-                    decoration: InputDecoration(
-                      hintText: "Write a message",
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10.0),
-                          borderSide: BorderSide.none),
-                      fillColor: Colors.transparent,
+                  child: Container(
+                    margin: EdgeInsets.all(10),
+                    decoration: BoxDecoration(
+                      color: Color.fromARGB(255, 247, 255, 23),
+                      borderRadius: BorderRadius.circular(10.0),
+                      border: Border.all(color: Color.fromARGB(0, 247, 20, 20)),
                     ),
-                    maxLines: null,
-                    keyboardType: TextInputType.multiline,
+                    child: TextField(
+                      textAlign: TextAlign.center,
+                      controller: _textController,
+                      decoration: InputDecoration(
+                        hintText: "Write a message",
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10.0),
+                            borderSide: BorderSide.none),
+                        fillColor: Colors.transparent,
+                      ),
+                      maxLines: null,
+                      keyboardType: TextInputType.multiline,
+                    ),
                   ),
                 ),
-                IconButton(
-                  icon: const Icon(Icons.add_a_photo),
-                  onPressed: () async {
-                    final XFile? image =
-                        await picker.pickImage(source: ImageSource.gallery);
-                    setState(() {
-                      imageFile = image != null ? File(image.path) : null;
-                    });
-                  },
+                Container(
+                  margin: const EdgeInsets.only(left: 10),
+                  decoration: BoxDecoration(
+                    color: Color.fromARGB(255, 233, 191, 3),
+                    borderRadius: BorderRadius.circular(10.0),
+                    border: Border.all(color: Color.fromARGB(0, 247, 20, 20)),
+                  ),
+                  child: IconButton(
+                    icon: const Icon(Icons.add_a_photo),
+                    onPressed: () async {
+                      final XFile? image =
+                          await picker.pickImage(source: ImageSource.gallery);
+                      setState(() {
+                        imageFile = image != null ? File(image.path) : null;
+                      });
+                    },
+                  ),
                 ),
-                IconButton(
-                  icon: loading
-                      ? const CircularProgressIndicator()
-                      : const Icon(Icons.send),
-                  onPressed: () {
-                    if (imageFile == null) {
-                      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                          content: Text("Please select an image")));
-                      return;
-                    }
-                    fromTextAndImage(
-                        query: _textController.text, image: imageFile!);
-                  },
+                Container(
+                  margin: const EdgeInsets.only(left: 10),
+                  decoration: BoxDecoration(
+                    color: Color.fromARGB(255, 233, 191, 3),
+                    borderRadius: BorderRadius.circular(10.0),
+                    border: Border.all(color: Color.fromARGB(0, 247, 20, 20)),
+                  ),
+                  child: IconButton(
+                    icon: loading
+                        ? const CircularProgressIndicator()
+                        : const Icon(Icons.send),
+                    onPressed: () {
+                      if (imageFile == null) {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                                content: Text("Please select an image")));
+                        return;
+                      }
+                      fromTextAndImage(
+                          query: _textController.text, image: imageFile!);
+                    },
+                  ),
                 ),
               ],
             ),

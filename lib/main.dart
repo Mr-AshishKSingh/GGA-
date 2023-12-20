@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:newgemini/Pages/ImageToText/imagetotext.dart';
 import 'package:newgemini/Pages/TextToText/texttotext.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:scaffold_gradient_background/scaffold_gradient_background.dart';
 
 final Uri _url = Uri.parse('https://github.com/Mr-AshishKSingh');
 
@@ -69,6 +71,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color.fromARGB(216, 85, 70, 70),
       appBar: AppBar(
         elevation: 10,
         shadowColor: Color.fromARGB(255, 0, 0, 0),
@@ -85,18 +88,24 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Center(
           child: Container(
             //color of the container
-            color: Color.fromARGB(255, 255, 255, 255),
+            color: Color.fromARGB(223, 255, 255, 255),
             child: Column(
               children: [
                 Container(
+                  width: 10,
+                  height: 10,
+                  //radiu
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
                   //color the container
-                  color: Color.fromARGB(255, 255, 8, 8),
+
                   //height of the container
 
                   margin: const EdgeInsets.all(10),
-                  child: const Text(
+                  child: Text(
                     " NOTICE ",
-                    style: TextStyle(
+                    style: GoogleFonts.preahvihear(
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
                         color: Colors.white),
@@ -112,15 +121,14 @@ class _MyHomePageState extends State<MyHomePage> {
                   child: Column(
                     children: [
                       Container(
-                        margin: const EdgeInsets.all(10),
-                        child: const Text(
-                          "Github Repository",
-                          style: TextStyle(
-                              fontSize: 20,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.deepPurple),
-                        ),
-                      ),
+                          margin: const EdgeInsets.all(10),
+                          child: Text(
+                            "Github Repository",
+                            style: GoogleFonts.preahvihear(
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.deepPurple),
+                          )),
                     ],
                   ),
                 ),
@@ -142,13 +150,14 @@ class _MyHomePageState extends State<MyHomePage> {
                       textAlign: TextAlign.center,
                     )),
                 Container(
+
                     //radius
                     //border
                     margin: const EdgeInsets.all(30),
                     decoration: BoxDecoration(
-                        color: Color.fromARGB(252, 6, 231, 92),
+                        color: Color.fromARGB(249, 193, 197, 195),
                         border: Border.all(
-                          color: Color.fromARGB(141, 4, 158, 63),
+                          color: Color.fromARGB(0, 4, 158, 63),
                           width: 2,
                         ),
                         borderRadius: BorderRadius.circular(10)),
@@ -162,12 +171,12 @@ class _MyHomePageState extends State<MyHomePage> {
                           child: Container(
                             child: Column(
                               children: [
-                                const Text(
-                                  "Text to text ",
-                                  style: TextStyle(
-                                      fontSize: 20,
+                                Text(
+                                  "Text to Text ",
+                                  style: GoogleFonts.fjallaOne(
+                                      fontSize: 30,
                                       fontWeight: FontWeight.bold,
-                                      color: Color.fromARGB(255, 0, 0, 0)),
+                                      color: Colors.black),
                                 ),
                                 // SizedBox(
                                 //   height: 10,
@@ -178,8 +187,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                     decoration: BoxDecoration(
                                         color: Color.fromARGB(255, 33, 142, 3),
                                         border: Border.all(
-                                          color:
-                                              Color.fromARGB(255, 20, 142, 4),
+                                          color: Color.fromARGB(0, 20, 142, 4),
                                           width: 2,
                                         ),
                                         borderRadius:
@@ -202,10 +210,13 @@ class _MyHomePageState extends State<MyHomePage> {
                                   height: 20,
                                 ),
 
-                                const Text(
-                                  "Here user can ask anything and he will get the response in the form of Text ",
-                                  textAlign: TextAlign.center,
-                                ),
+                                Text(
+                                    "Here user can ask anything and he will get the response in the form of Text ",
+                                    textAlign: TextAlign.center,
+                                    style: GoogleFonts.fjallaOne(
+                                        fontSize: 15,
+                                        fontWeight: FontWeight.normal,
+                                        color: Colors.black)),
 
                                 SizedBox(
                                   height: 20,
@@ -242,9 +253,9 @@ class _MyHomePageState extends State<MyHomePage> {
                     //border
                     margin: const EdgeInsets.all(30),
                     decoration: BoxDecoration(
-                        color: Color.fromARGB(255, 243, 211, 4),
+                        color: Color.fromARGB(249, 193, 197, 195),
                         border: Border.all(
-                          color: Color.fromARGB(141, 150, 158, 4),
+                          color: Color.fromARGB(0, 150, 158, 4),
                           width: 2,
                         ),
                         borderRadius: BorderRadius.circular(10)),
@@ -258,13 +269,13 @@ class _MyHomePageState extends State<MyHomePage> {
                           child: Container(
                             child: Column(
                               children: [
-                                const Text(
+                                Text(
                                   "Image to Text ",
                                   textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                      fontSize: 20,
+                                  style: GoogleFonts.fjallaOne(
+                                      fontSize: 30,
                                       fontWeight: FontWeight.bold,
-                                      color: Color.fromARGB(255, 1, 0, 0)),
+                                      color: Colors.black),
                                 ),
 
                                 Container(
