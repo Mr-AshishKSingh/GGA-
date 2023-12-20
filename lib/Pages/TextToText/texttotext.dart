@@ -37,7 +37,7 @@ class _texttotextState extends State<texttotext> {
       setState(() {
         loading = false;
         textChat.add({
-          "role": "Gemini",
+          "role": "App",
           "text": value.text,
         });
       });
@@ -46,7 +46,7 @@ class _texttotextState extends State<texttotext> {
       setState(() {
         loading = false;
         textChat.add({
-          "role": "Gemini",
+          "role": "GGA",
           "text": error.toString(),
         });
       });
@@ -62,8 +62,17 @@ class _texttotextState extends State<texttotext> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          shadowColor: Color.fromARGB(255, 151, 235, 16),
-          backgroundColor: Color.fromARGB(241, 135, 230, 12),
+          //shape
+
+          shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.vertical(
+              bottom: Radius.circular(30),
+            ),
+          ),
+          elevation: 10,
+          toolbarHeight: 80,
+          shadowColor: Color.fromARGB(255, 235, 237, 231),
+          backgroundColor: Color.fromARGB(236, 146, 254, 13),
           centerTitle: true,
           title: const Text("Text to Text",
               style: TextStyle(
@@ -137,7 +146,10 @@ class _texttotextState extends State<texttotext> {
                           style: TextStyle(
                               color: Colors.black, fontWeight: FontWeight.bold),
                         ),
-                        subtitle: Text(textChat[index]["text"]),
+                        subtitle: Text(textChat[index]["text"],
+                            style: TextStyle(
+                                color: Colors.black,
+                                fontWeight: FontWeight.bold)),
                       ),
                     );
                   },
